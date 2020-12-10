@@ -1,9 +1,10 @@
 let posChoice=["lizard", "scissors","rock","paper","spock"];
 function computerPlay(){
-    let PCchoice= posChoice[Math.floor(Math.random()*(posChoice.length-1))];
+    let PCchoice= posChoice[Math.floor(Math.random()*(posChoice.length))];
     return PCchoice;
 }
 function round(playerChoice){
+    playerChoice=playerChoice.toLowerCase();
   let PCchoice=computerPlay();
     if (!posChoice.includes(playerChoice)){
         alert("Wrong input");
@@ -12,67 +13,106 @@ function round(playerChoice){
     switch(playerChoice){
         case "scissors": 
         if (PCchoice=="paper"||PCchoice=="lizard"){
-            console.log("Yeah, you won");
+            return ("Yeah, you won");
         }
         else if(playerChoice==PCchoice){
-            console.log("That's a tie");
+            return ("That's a tie");
 
         }
         else{ 
-            console.log(PCchoice);
-            console.log("That's sad, you lose")}
+            return ("That's sad, you lose")}
     }
     switch(playerChoice){
         case "spock": 
         if (PCchoice=="scissors"||PCchoice=="rock"){
-            console.log("Yeah, you won");
+            return ("Yeah, you won");
         }
         else if(playerChoice==PCchoice){
-            console.log("That's a tie");
+           
+
+            return("That's a tie");
 
         }
-        else{ 
-            console.log(PCchoice);
-            console.log("That's sad, you lose")}
+        else{             
+
+            return("That's sad, you lose")}
     }
     switch(playerChoice){
         case "rock": 
         if (PCchoice=="lizard"||PCchoice=="scissors"){
-            console.log("Yeah, you won");
+            return("Yeah, you won");
         }
         else if(playerChoice==PCchoice){
-            console.log("That's a tie");
+            return("That's a tie");
 
         }
         else{ 
-            console.log(PCchoice);
-            console.log("That's sad, you lose")}
+            return("That's sad, you lose")}
     }
     switch(playerChoice){
         case "paper": 
         if (PCchoice=="rock"||PCchoice=="spock"){
-            console.log("Yeah, you won");
+            return("Yeah, you won");
         }
         else if(playerChoice==PCchoice){
-            console.log("That's a tie");
+            return("That's a tie");
 
         }
         else{ 
-            console.log(PCchoice);
-            console.log("That's sad, you lose")}
+            
+            return("That's sad, you lose")}
     }
     switch(playerChoice){
         case "lizard": 
         if (PCchoice=="spock"||PCchoice=="paper"){
-            console.log("Yeah, you won");
+            return("Yeah, you won");
         }
         else if(playerChoice==PCchoice){
-            console.log("That's a tie");
+            return("That's a tie");
 
         }
         else{ 
-            console.log(PCchoice);
-            console.log("That's sad, you lose")}
+            
+            return("That's sad, you lose")}
     }
 
 }
+
+function game(){
+    let playerScore;
+    let pcScore;
+    let result;
+    for (playerScore=0, pcScore=0;;){
+        let playerChoice=window.prompt("What is your choice?");
+        result=round(playerChoice);
+            if (result==("Yeah, you won")){
+                playerScore++;
+                console.log(result);
+                console.log(playerScore, pcScore);
+
+            }
+            else if (result==("That's sad, you lose")){                
+
+                pcScore++;
+                console.log(result);
+                console.log(playerScore, pcScore);
+
+            }
+            else{                
+
+                console.log(result);
+                                console.log(playerScore, pcScore);
+
+            }
+
+            if (playerScore==5){
+                console.log("You won the game");
+                return;
+            }
+            else if (pcScore==5){
+                console.log("You lose the game");
+                return;
+            }
+        }
+    }
+
