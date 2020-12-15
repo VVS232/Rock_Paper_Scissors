@@ -1,0 +1,45 @@
+html {
+    height: 100%;
+  }
+  body {
+      height:inherit;
+      margin: 0;
+background-image: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v748-toon-13_1_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=e42eb60525bc4cfddb751f4729bef54a);  
+}
+#container{
+margin:5% auto;
+margin-top: 10%;
+    height:70vh;
+    width:40%;
+display: grid;
+grid-template-areas: "rock rock rock rock rock"
+                     "spock spock . paper paper"
+                     "lizard lizard . scissors scissors";
+
+text-align: center;
+justify-items: center;
+align-items: center;
+ }
+
+.choice{
+    max-width:150px;
+}
+#rock{
+    grid-area: rock;
+}
+#paper{
+    grid-area:paper;
+    justify-self: center;
+}
+#spock{
+    grid-area: spock;
+    justify-self: center;
+}
+
+#lizard{
+    grid-area: lizard;
+justify-self: end;}
+#scissors{
+    grid-area: scissors;
+    justify-self: start;
+}
