@@ -6,20 +6,20 @@ function computerPlay(){
 function round(playerChoice){
     playerChoice=playerChoice.toLowerCase();
   let PCchoice=computerPlay();
-    if (!posChoice.includes(playerChoice)){
-        alert("Wrong input");
-        return;
-    }
+
     switch(playerChoice){
         case "scissors": 
         if (PCchoice=="paper"||PCchoice=="lizard"){
+            console.log("action")
             return ("Yeah, you won");
         }
-        else if(playerChoice==PCchoice){
+        else if(playerChoice==PCchoice){            console.log("action")
+
             return ("That's a tie");
 
         }
-        else{ 
+        else{             console.log("action")
+
             return ("That's sad, you lose")}
     }
     switch(playerChoice){
@@ -78,7 +78,7 @@ function round(playerChoice){
 
 }
 
-function game(){
+/*function game(){
     let playerScore;
     let pcScore;
     let result;
@@ -115,4 +115,9 @@ function game(){
             }
         }
     }
+*/
 
+let choices = document.querySelectorAll(".choice");
+choices.forEach(choice=>{
+    choice.addEventListener("click", function (){ round(choice.id)});
+})

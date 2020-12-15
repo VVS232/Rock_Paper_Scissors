@@ -1,18 +1,17 @@
-html {
-    height: 100%;
-  }
+
   body {
-      height:inherit;
       margin: 0;
 background-image: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v748-toon-13_1_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=e42eb60525bc4cfddb751f4729bef54a);  
+justify-content: center;
 }
 #container{
 margin:5% auto;
-margin-top: 10%;
+margin-top: 4%;
     height:70vh;
     width:40%;
 display: grid;
-grid-template-areas: "rock rock rock rock rock"
+grid-template-areas: 
+                    "rock rock rock rock rock"
                      "spock spock . paper paper"
                      "lizard lizard . scissors scissors";
 
@@ -43,3 +42,15 @@ justify-self: end;}
     grid-area: scissors;
     justify-self: start;
 }
+header{
+   display: flex; 
+justify-content: center;}
+#score{
+    background-color: white;
+    width:30%;
+    height: 1.5em;
+    text-align: center;
+    font-size: 2em;
+}
+
+
