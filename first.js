@@ -1,11 +1,13 @@
+//give an array of choices, array score (to return 2 values as one from func)
 let posChoice=["lizard", "scissors","rock","paper","spock"];
 let score=[0,0];
 let choices = document.querySelectorAll(".choice");
-
+//PC chooses
 function computerPlay(){
     let PCchoice= posChoice[Math.floor(Math.random()*(posChoice.length))];
     return PCchoice;
 }
+//function for 1 round
 function round(playerChoice){
 
   let PCchoice=computerPlay();
@@ -103,7 +105,7 @@ document.getElementById("PCChoice").innerHTML=`<img  id="pcChoiceimg" src="img/$
 
 
 
-
+//checking if the game is ended. If not - update score bar
 function game(score){
     if (score[0]==5||score[1]==5){
         document.getElementById("player").textContent=score[0];
@@ -122,7 +124,7 @@ function game(score){
         document.getElementById("PC").textContent=score[1];
     }
 }
-
+//a function called by the button to start game. Sets everything to 0;
   function start(){ 
       score[0]=0;
       score[1]=0;
@@ -135,7 +137,12 @@ document.getElementById("PCChoice").innerHTML="";
        choices.forEach(choice=>{
     choice.addEventListener("click", play);
        
-   }) }  
+   }) } 
+   
+   
+   //I cannot pass parameters at event listener
+   //so i had to make this function to look for choice.id
+   //this func makes every function work together
    function play(e){
     game(round(e.currentTarget.id))
 }   
