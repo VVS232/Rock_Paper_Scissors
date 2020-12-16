@@ -1,123 +1,118 @@
 let posChoice=["lizard", "scissors","rock","paper","spock"];
+let score=[0,0];
+
 function computerPlay(){
     let PCchoice= posChoice[Math.floor(Math.random()*(posChoice.length))];
     return PCchoice;
 }
 function round(playerChoice){
-    playerChoice=playerChoice.toLowerCase();
+
   let PCchoice=computerPlay();
+document.getElementById("playerChoice").innerHTML=`<img class="choice" src="img/${playerChoice}.png">`;
+document.getElementById("PCChoice").innerHTML=`<img class="choice" src="img/${PCchoice}.png">`;
 
     switch(playerChoice){
         case "scissors": 
         if (PCchoice=="paper"||PCchoice=="lizard"){
-            console.log("action")
-            return ("Yeah, you won");
+            score[0]++;
+            return score;
         }
-        else if(playerChoice==PCchoice){            console.log("action")
+        else if(playerChoice==PCchoice){           
 
-            return ("That's a tie");
+            return score;
 
         }
-        else{             console.log("action")
-
-            return ("That's sad, you lose")}
-    }
-    switch(playerChoice){
+        else{            
+            score[1]++;
+            return score;
+        }
+    
         case "spock": 
         if (PCchoice=="scissors"||PCchoice=="rock"){
-            return ("Yeah, you won");
+            score[0]++;
+
+            return score;
         }
         else if(playerChoice==PCchoice){
            
 
-            return("That's a tie");
+            return score;
 
         }
         else{             
+            score[1]++;
 
-            return("That's sad, you lose")}
-    }
-    switch(playerChoice){
+            return score;
+        }
+    
         case "rock": 
         if (PCchoice=="lizard"||PCchoice=="scissors"){
-            return("Yeah, you won");
+            score[0]++;
+ 
+            return score;
         }
         else if(playerChoice==PCchoice){
-            return("That's a tie");
+            return score;
 
         }
         else{ 
-            return("That's sad, you lose")}
-    }
-    switch(playerChoice){
+            score[1]++;
+
+            return score;
+        }
+    
         case "paper": 
         if (PCchoice=="rock"||PCchoice=="spock"){
-            return("Yeah, you won");
+            score[0]++;
+
+            return score;
         }
         else if(playerChoice==PCchoice){
-            return("That's a tie");
+            return score;
 
         }
         else{ 
-            
-            return("That's sad, you lose")}
-    }
-    switch(playerChoice){
+            score[1]++;
+
+            return score;
+        }
+    
         case "lizard": 
         if (PCchoice=="spock"||PCchoice=="paper"){
-            return("Yeah, you won");
+            score[0]++;
+
+            return score;
         }
         else if(playerChoice==PCchoice){
-            return("That's a tie");
+            return score;
 
         }
         else{ 
-            
-            return("That's sad, you lose")}
-    }
+            score[1]++;
+
+            return score;
+        }
+    
 
 }
+}
 
-/*function game(){
-    let playerScore;
-    let pcScore;
-    let result;
-    for (playerScore=0, pcScore=0;;){
-        let playerChoice=window.prompt("What is your choice?");
-        result=round(playerChoice);
-            if (result==("Yeah, you won")){
-                playerScore++;
-                console.log(result);
-                console.log(playerScore, pcScore);
 
-            }
-            else if (result==("That's sad, you lose")){                
-
-                pcScore++;
-                console.log(result);
-                console.log(playerScore, pcScore);
-
-            }
-            else{                
-
-                console.log(result);
-                                console.log(playerScore, pcScore);
-
-            }
-
-            if (playerScore==5){
-                console.log("You won the game");
-                return;
-            }
-            else if (pcScore==5){
-                console.log("You lose the game");
-                return;
-            }
-        }
+function game(score){
+    if (score[0]==5||score[1]==5){
+        console.log(score);
+        console.log("game over");
+        score[0]=0;
+        score[1]=0;
+        document.getElementById("player").textContent=0;
+        document.getElementById("PC").textContent=0;
     }
-*/
-
-let choices = document.querySelectorAll(".choice");
-choices.forEach(choice=>{
-    choice.addEventListener("click", function (){ round(choice.id)});
-})
+    else{
+        document.getElementById("player").textContent=score[0];
+        document.getElementById("PC").textContent=score[1];
+    }
+}
+        let choices = document.querySelectorAll(".choice");
+        choices.forEach(choice=>{
+            choice.addEventListener("click", function (){ game(round(choice.id))});
+        })
