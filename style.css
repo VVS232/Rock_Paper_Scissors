@@ -7,12 +7,11 @@ justify-content: center;
 #container{
 margin:5% auto;
 margin-top: 4%;
-    height:70vh;
     width:40%;
 display: grid;
 grid-template-areas: 
                     "rock rock rock rock rock"
-                     "spock spock . paper paper"
+                     "spock spock result paper paper"
                      "lizard lizard . scissors scissors";
 
 text-align: center;
@@ -45,13 +44,32 @@ justify-self: end;}
 header{
    display: flex; 
 justify-content: center;}
+#result{
+    font-size: 1.5em;
+    width:100px;
+    grid-area: result;
+}
 #score{
     background-color: white;
     width:30%;
     height: 1.5em;
     text-align: center;
     font-size: 2em;
-    margin-top:50px;
+    margin-top:20px;
+}
+#playerChoiceimg, #pcChoiceimg{
+    max-width:100px;
 }
 
-
+#start{
+display: block;  
+  width:150px;
+    margin:20px auto;
+}
+#rules{
+    font-size: 2em;
+    position:fixed;
+    left:0;
+    width:400px;
+    border: solid 2px gray;
+}

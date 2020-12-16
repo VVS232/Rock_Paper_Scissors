@@ -1,5 +1,6 @@
 let posChoice=["lizard", "scissors","rock","paper","spock"];
 let score=[0,0];
+let choices = document.querySelectorAll(".choice");
 
 function computerPlay(){
     let PCchoice= posChoice[Math.floor(Math.random()*(posChoice.length))];
@@ -8,8 +9,8 @@ function computerPlay(){
 function round(playerChoice){
 
   let PCchoice=computerPlay();
-document.getElementById("playerChoice").innerHTML=`<img class="choice" src="img/${playerChoice}.png">`;
-document.getElementById("PCChoice").innerHTML=`<img class="choice" src="img/${PCchoice}.png">`;
+document.getElementById("playerChoice").innerHTML=`<img  id="playerChoiceimg" src="img/${playerChoice}.png">`;
+document.getElementById("PCChoice").innerHTML=`<img  id="pcChoiceimg" src="img/${PCchoice}.png">`;
 
     switch(playerChoice){
         case "scissors": 
@@ -98,21 +99,45 @@ document.getElementById("PCChoice").innerHTML=`<img class="choice" src="img/${PC
 }
 
 
+
+
+
+
+
 function game(score){
     if (score[0]==5||score[1]==5){
-        console.log(score);
-        console.log("game over");
-        score[0]=0;
-        score[1]=0;
-        document.getElementById("player").textContent=0;
-        document.getElementById("PC").textContent=0;
+        document.getElementById("player").textContent=score[0];
+        document.getElementById("PC").textContent=score[1];
+        choices.forEach(choice=>{
+            choice.removeEventListener("click", play);}) 
+    }
+    if (score[0]==5){
+        document.getElementById("result").textContent="You won the game. Again?";
+    }
+    if (score[1]==5){
+        document.getElementById("result").textContent="You lose the game. Again?";
     }
     else{
         document.getElementById("player").textContent=score[0];
         document.getElementById("PC").textContent=score[1];
     }
 }
-        let choices = document.querySelectorAll(".choice");
-        choices.forEach(choice=>{
-            choice.addEventListener("click", function (){ game(round(choice.id))});
-        })
+
+  function start(){ 
+      score[0]=0;
+      score[1]=0;
+      document.getElementById("playerChoice").innerHTML="";
+document.getElementById("PCChoice").innerHTML="";
+      document.getElementById("player").textContent=score[0];
+      document.getElementById("PC").textContent=score[1];
+      document.getElementById("result").textContent="";
+
+       choices.forEach(choice=>{
+    choice.addEventListener("click", play);
+       
+   }) }  
+   function play(e){
+    game(round(e.currentTarget.id))
+}   
+document.getElementById("start").onclick= start;
+     
